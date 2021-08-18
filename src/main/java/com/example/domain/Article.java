@@ -17,7 +17,7 @@ public class Article {
 	/** 投稿内容 */
 	private String content;
 	/** コメントリスト */
-	private List<Comment> commentList;
+//	private List<Comment> commentList;
 	
 	
 	public Integer getId() {
@@ -38,12 +38,12 @@ public class Article {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public List<Comment> getCommentList() {
-		return commentList;
-	}
-	public void setCommentList(List<Comment> commentList) {
-		this.commentList = commentList;
-	}
+//	public List<Comment> getCommentList() {
+//		return commentList;
+//	}
+//	public void setCommentList(List<Comment> commentList) {
+//		this.commentList = commentList;
+//	}
 	
 	@Override
 	public String toString() {
