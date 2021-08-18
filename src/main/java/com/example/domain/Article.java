@@ -20,16 +20,6 @@ public class Article {
 	private List<Comment> commentList;
 	
 	
-	public Article() {
-	}
-	
-	public Article(Integer id, String name, String content, List<Comment> commentList) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.content = content;
-		this.commentList = commentList;
-	}
 	public Integer getId() {
 		return id;
 	}
