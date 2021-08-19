@@ -70,6 +70,5 @@ public class ArticleRepository {
 		template.update(deleteSql, param);
 	}
 	
-	
 
 }

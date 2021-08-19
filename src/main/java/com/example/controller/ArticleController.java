@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.domain.Article;
 import com.example.domain.Comment;
 import com.example.form.ArticleForm;
+import com.example.form.CommentForm;
 import com.example.repository.ArticleRepository;
 import com.example.repository.CommentRepository;
 
@@ -22,6 +23,11 @@ public class ArticleController {
 	@ModelAttribute
 	public ArticleForm setUpForm() {
 		return new ArticleForm();
+	}
+	
+	@ModelAttribute
+	public CommentForm setUpForm2() {
+		return new CommentForm();
 	}
 	
 	@Autowired
@@ -63,9 +69,15 @@ public class ArticleController {
 		return "redirect:/article";
 	}
 	
-//	@RequestMapping("/insertComment")
-//	public String insertComment(CommentForm form) {
-//		
-//	}
+	@RequestMapping("/insertComment")
+	public String insertComment(CommentForm form) {
+		System.out.println("フォーム内容：" + form);
+		Comment comment = new Comment();
+		BeanUtils.copyProperties(form, comment);
+		comment.setArticleId(Integer.parseInt(form.getArticleId()));
+		
+		commentRepository.insert(comment);
+		return "redirect:/article";
+	}
 
 }
