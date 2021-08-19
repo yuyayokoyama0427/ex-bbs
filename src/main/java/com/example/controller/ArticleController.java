@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.domain.Article;
 import com.example.domain.Comment;
@@ -71,12 +72,19 @@ public class ArticleController {
 	
 	@RequestMapping("/insertComment")
 	public String insertComment(CommentForm form) {
-		System.out.println("フォーム内容：" + form);
 		Comment comment = new Comment();
 		BeanUtils.copyProperties(form, comment);
 		comment.setArticleId(Integer.parseInt(form.getArticleId()));
 		
 		commentRepository.insert(comment);
+		return "redirect:/article";
+	}
+	
+	@RequestMapping("/deleteArticle")
+	public String deleteArticle(int articleId) {
+		commentRepository.deleteByArticleId(articleId);		
+		articleRepository.deleteById(articleId);
+		
 		return "redirect:/article";
 	}
 
